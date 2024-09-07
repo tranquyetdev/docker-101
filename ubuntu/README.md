@@ -1,6 +1,6 @@
 # Ubuntu
 
-This is my Ubuntu PC, with a pre-configured environment for software development. It includes essential tools, packages, and Python libraries to get started quickly. So I can easily set up my development environment on any machine, without the need to install everything from scratch.
+This is my Ubuntu PC for testing. It includes essential tools, packages, and Python libraries to get started quickly.
 
 ## Packages
 
@@ -21,33 +21,19 @@ This is my Ubuntu PC, with a pre-configured environment for software development
 | libssl-dev                 | Development files needed for applications that use the Secure Sockets Layer (SSL) protocol.                 |
 | libffi-dev                 | Development files needed for applications that use the Foreign Function Interface (FFI) for calling C code. |
 
-### Python
-
-| Name    | Description                                                                                                               |
-| ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ipython | An enhanced interactive Python shell with additional features such as auto-completion, history, and debugging.            |
-| pylint  | A static code analysis tool for Python that checks for coding errors, enforces coding standards, and detects code smells. |
-| black   | An uncompromising Python code formatter that reformats code to follow consistent style, ensuring uniformity.              |
-| flake8  | A tool that checks Python code for compliance with PEP 8 style guidelines, linting errors, and complexity.                |
-
 ## Getting Started
 
 ```bash
 # Change the directory to the ubuntu folder
 cd ubuntu
 
-# Build the image
+## Build & Push the image
 docker build -t tranquyet/myubuntu .
-
-# Run the container right away
-docker run --rm --name myubuntu -it tranquyet/myubuntu bash
-
-# Check the Python version
-python3 --version
-
-# Have fun!
-exit
-
-# Push the image to Docker Hub
 docker push tranquyet/myubuntu
+
+# Run the container
+docker run --rm \
+-v ${PWD}/workspace/:/workspace/ \
+-it tranquyet/myubuntu \
+bash
 ```

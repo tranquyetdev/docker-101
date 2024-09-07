@@ -1,0 +1,10 @@
+version: "3"
+services:
+  # My Ubuntu workspace
+  myubuntu:
+    image: tranquyet/myubuntu:latest
+    container_name: myubuntu
+    tty: true # Allocate a pseudo-TTY to allow terminal access
+    stdin_open: true # Keep the container open for interactive use
+    volumes:
+      - ./ubuntu/workspace:/workspace

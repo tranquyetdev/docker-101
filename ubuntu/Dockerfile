@@ -27,21 +27,8 @@ RUN apt-get update && \
 FROM base as runner
 
 # Set the working directory
-WORKDIR /usr/src/app
-
-# Create a Python virtual environment
-RUN python3 -m venv /opt/venv
-
-# Activate the virtual environment and install Python packages
-RUN /opt/venv/bin/pip install --upgrade pip && \
-    /opt/venv/bin/pip install \
-    ipython \
-    pylint \
-    black \
-    flake8 
-
-# Add the virtual environment to the PATH
-ENV PATH="/opt/venv/bin:$PATH"
+RUN mkdir /workspace
+WORKDIR /workspace
 
 # Set the default command to open an interactive shell
 CMD ["/bin/bash"]
